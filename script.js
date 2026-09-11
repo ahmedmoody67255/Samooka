@@ -1,6 +1,36 @@
-const hearts=document.getElementById('hearts'),sparkles=document.getElementById('sparkles');
-const heartList=['♥','♡','❤','💗','💕'];
-function addHeart(){const h=document.createElement('span');h.className='heart';h.textContent=heartList[Math.floor(Math.random()*heartList.length)];h.style.left=Math.random()*100+'vw';h.style.setProperty('--size',12+Math.random()*22+'px');h.style.setProperty('--opacity',.22+Math.random()*.48);h.style.setProperty('--duration',7+Math.random()*8+'s');h.style.setProperty('--x',(-90+Math.random()*180)+'px');hearts.appendChild(h);setTimeout(()=>h.remove(),16000)}
-setInterval(addHeart,420);for(let i=0;i<18;i++)setTimeout(addHeart,i*150);
-for(let i=0;i<35;i++){const s=document.createElement('span');s.className='spark';s.textContent=['✦','✧','⋆','·'][Math.floor(Math.random()*4)];s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';s.style.setProperty('--size',8+Math.random()*15+'px');s.style.setProperty('--duration',2+Math.random()*3+'s');sparkles.appendChild(s)}
-const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
+const hearts = document.getElementById('hearts');
+const sparkles = document.getElementById('sparkles');
+const heartList = ['♥', '♡', '❤', '💗', '💕'];
+
+function addHeart() {
+  const h = document.createElement('span');
+  h.className = 'heart';
+  h.textContent = heartList[Math.floor(Math.random() * heartList.length)];
+  h.style.left = Math.random() * 100 + 'vw';
+  h.style.setProperty('--size', 12 + Math.random() * 22 + 'px');
+  h.style.setProperty('--opacity', .22 + Math.random() * .48);
+  h.style.setProperty('--duration', 7 + Math.random() * 8 + 's');
+  h.style.setProperty('--x', (-90 + Math.random() * 180) + 'px');
+  hearts.appendChild(h);
+  setTimeout(() => h.remove(), 16000);
+}
+
+setInterval(addHeart, 420);
+for (let i = 0; i < 18; i++) setTimeout(addHeart, i * 150);
+
+for (let i = 0; i < 35; i++) {
+  const s = document.createElement('span');
+  s.className = 'spark';
+  s.textContent = ['✦', '✧', '⋆', '·'][Math.floor(Math.random() * 4)];
+  s.style.left = Math.random() * 100 + 'vw';
+  s.style.top = Math.random() * 100 + 'vh';
+  s.style.setProperty('--size', 8 + Math.random() * 15 + 'px');
+  s.style.setProperty('--duration', 2 + Math.random() * 3 + 's');
+  sparkles.appendChild(s);
+}
+
+const observer = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('show');
+}), { threshold: .12 });
+
+document.querySelectorAll('.reveal').forEach(e => observer.observe(e));
